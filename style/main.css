@@ -4,7 +4,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
-  background-color: #fff;
+  background-color: #ededed;
 }
 /* Helper */
 .mx-auto {
@@ -12,7 +12,7 @@ body {
   margin-left: auto;
 }
 .container {
-  width: 900px;
+  width: 1200px;
   box-sizing: border-box;
 }
 .grid {
@@ -23,9 +23,27 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.main {
-  width: 93%;
-  padding-bottom: 30px;
-}
-
 /* --- Modules --- */
+.hd__title{
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  color: #636b6a;
+}
+.nav {
+  text-align: center;
+  background-color: #fff;
+}
+.nav__select {
+  width:300px; 
+  padding-left: 8px;
+  margin:20px auto;
+  height:40px; 
+  font-size:17px;
+  border: none;
+  border-radius: 3px;
+  background-color: #ededed; 
+}
+.nav__select +.nav__select {
+  margin-left: 40px;
+}
