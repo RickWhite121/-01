@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/* --- Global --- */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  background-color: #fff;
+}
+/* Helper */
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+.container {
+  width: 900px;
+  box-sizing: border-box;
+}
+.grid {
+  display: flex;
+}
+/* --- Layouts --- */
+.hd {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.main {
+  width: 93%;
+  padding-bottom: 30px;
+}
+
+/* --- Modules --- */
