@@ -94,10 +94,10 @@ body {
 .res__flag {
   position: absolute;
   top: 0px;
-  padding: 3px;
+  padding: 3px 5px;
   font-size: 12px;
   color: #fff;
-  background-color: #e2952f;
+  background-color: #eea539
 }
 .res__desc {
   font-size: 14px;
