@@ -13,10 +13,10 @@
 </head>
 
 <body>
-  <!-- <div class="loadingPage" id="LoadingPage">
+  <div class="loadingPage" id="LoadingPage">
     <img src="./images/loading.gif" alt="">
     <p>資料下載中...請稍後!</p>
-  </div> -->
+  </div>
   <header class="hd">
     <h1 class="hd__title">
       農村地方美食小吃特色料理
@@ -24,108 +24,14 @@
   </header>
   <div class="container mx-auto">
     <nav class="nav">
-      <select class="nav__select" name="" id="">
-        <option value="">南投縣</option>
+      <select class="nav__select" name="" id="CountySelector">
+        <option value="" disabled selected>請選擇行政區域...</option>
       </select>
-      <select class="nav__select" name="" id="">
-        <option value="">請選擇鄉鎮區...</option>
-        <option value="">我是誰</option>
+      <select class="nav__select" name="" id="TownSelector">
+        <option value="" disabled selected>請選擇鄉鎮區...</option>
       </select>
     </nav>
-    <main class="content grid">
-      <section class="grid__item">
-        <figure class="res">
-          <img class="res__img" src="https://ezgo.coa.gov.tw/Uploads/opendata/TainmaMain01/APPLY_D/20151007173924.jpg"
-            alt="123" width="400" height="267">
-          <p class="res__flag">苗栗縣</p>
-          <figcaption class="res__text">
-            <p class="res__desc res__desc--italic">大湖鄉</p>
-            <h2 class="res__title">五五五五五</h2>
-            <hr>
-            <p class="res__desc">
-              湖苺宴開在大湖酒莊的4樓，是大湖地區農會經營的田媽媽餐坊，但是不同於一般田園風格的田媽媽主題餐廳，主打草莓創意料理的湖苺宴，裝潢、菜色都充滿年輕想法，一群六年級中段班的田媽媽，把她們對草莓的奇思異想，充份發揮在料理上。
-              餐廳所供的菜色會依季節不同做更換，皆以套餐為主，在草莓產季菜單有德國烤豬腳酌草莓醋酸菜、草莓魚排酌草莓酸辣醬等，另外，這裡的意大利麵可是別處吃不到的哦！因為田媽媽們在麵條中加入了草莓，遊客吃了會有驚豔之感哦！
-              若是水梨產季，則推出水梨風味套餐，其中「水梨磨菇里肌肉餐」餐點以新鮮的水梨加上鮮嫩多汁的里肌肉以燴飯的方式呈現，讓您吃到水果的鮮甜及富有彈性的里肌肉，多層次的口感保證讓您回味無窮。</p>
-          </figcaption>
-        </figure>
-      </section>
-      <section class="grid__item">
-        <figure class="res">
-          <img class="res__img" src="https://ezgo.coa.gov.tw/Uploads/opendata/TainmaMain01/APPLY_D/20151007173924.jpg"
-            alt="123" width="400" height="267">
-          <p class="res__flag">苗栗縣</p>
-          <figcaption class="res__text">
-            <p class="res__desc res__desc--italic">大湖鄉</p>
-            <h2 class="res__title">五五五五五</h2>
-            <hr>
-            <p class="res__desc">
-              湖苺宴開在大湖酒莊的4樓，是大湖地區農會經營的田媽媽餐坊，但是不同於一般田園風格的田媽媽主題餐廳，主打草莓創意料理的湖苺宴，裝潢、菜色都充滿年輕想法，一群六年級中段班的田媽媽，把她們對草莓的奇思異想，充份發揮在料理上。
-              餐廳所供的菜色會依季節不同做更換，皆以套餐為主，在草莓產季菜單有德國烤豬腳酌草莓醋酸菜、草莓魚排酌草莓酸辣醬等，另外，這裡的意大利麵可是別處吃不到的哦！因為田媽媽們在麵條中加入了草莓，遊客吃了會有驚豔之感哦！
-              若是水梨產季，則推出水梨風味套餐，其中「水梨磨菇里肌肉餐」餐點以新鮮的水梨加上鮮嫩多汁的里肌肉以燴飯的方式呈現，讓您吃到水果的鮮甜及富有彈性的里肌肉，多層次的口感保證讓您回味無窮。</p>
-          </figcaption>
-        </figure>
-      </section>
-      <section class="grid__item">
-        <figure class="res">
-          <img class="res__img" src="https://ezgo.coa.gov.tw/Uploads/opendata/TainmaMain01/APPLY_D/20151007173924.jpg"
-            alt="123" width="400" height="267">
-          <figcaption class="res__text">
-            <p class="res__cou">苗栗縣</p>
-            <p class="res__desc">大湖鄉</p>
-            <h2 class="res__title">五五五五五</h2>
-            <p class="res__info">
-              湖苺宴開在大湖酒莊的4樓，是大湖地區農會經營的田媽媽餐坊，但是不同於一般田園風格的田媽媽主題餐廳，主打草莓創意料理的湖苺宴，裝潢、菜色都充滿年輕想法，一群六年級中段班的田媽媽，把她們對草莓的奇思異想，充份發揮在料理上。
-              餐廳所供的菜色會依季節不同做更換，皆以套餐為主，在草莓產季菜單有德國烤豬腳酌草莓醋酸菜、草莓魚排酌草莓酸辣醬等，另外，這裡的意大利麵可是別處吃不到的哦！因為田媽媽們在麵條中加入了草莓，遊客吃了會有驚豔之感哦！
-              若是水梨產季，則推出水梨風味套餐，其中「水梨磨菇里肌肉餐」餐點以新鮮的水梨加上鮮嫩多汁的里肌肉以燴飯的方式呈現，讓您吃到水果的鮮甜及富有彈性的里肌肉，多層次的口感保證讓您回味無窮。</p>
-          </figcaption>
-        </figure>
-      </section>
-      <section class="grid__item">
-        <figure class="res">
-          <img class="res__img" src="https://ezgo.coa.gov.tw/Uploads/opendata/TainmaMain01/APPLY_D/20151007173924.jpg"
-            alt="123" width="400" height="267">
-          <figcaption class="res__text">
-            <p class="res__cou">苗栗縣</p>
-            <p class="res__desc">大湖鄉</p>
-            <h2 class="res__title">五五五五五</h2>
-            <p class="res__info">
-              湖苺宴開在大湖酒莊的4樓，是大湖地區農會經營的田媽媽餐坊，但是不同於一般田園風格的田媽媽主題餐廳，主打草莓創意料理的湖苺宴，裝潢、菜色都充滿年輕想法，一群六年級中段班的田媽媽，把她們對草莓的奇思異想，充份發揮在料理上。
-              餐廳所供的菜色會依季節不同做更換，皆以套餐為主，在草莓產季菜單有德國烤豬腳酌草莓醋酸菜、草莓魚排酌草莓酸辣醬等，另外，這裡的意大利麵可是別處吃不到的哦！因為田媽媽們在麵條中加入了草莓，遊客吃了會有驚豔之感哦！
-              若是水梨產季，則推出水梨風味套餐，其中「水梨磨菇里肌肉餐」餐點以新鮮的水梨加上鮮嫩多汁的里肌肉以燴飯的方式呈現，讓您吃到水果的鮮甜及富有彈性的里肌肉，多層次的口感保證讓您回味無窮。</p>
-          </figcaption>
-        </figure>
-      </section>
-      <section class="grid__item">
-        <figure class="res">
-          <img class="res__img" src="https://ezgo.coa.gov.tw/Uploads/opendata/TainmaMain01/APPLY_D/20151007173924.jpg"
-            alt="123" width="400" height="267">
-          <figcaption class="res__text">
-            <p class="res__cou">苗栗縣</p>
-            <p class="res__desc">大湖鄉</p>
-            <h2 class="res__title">五五五五五</h2>
-            <p class="res__info">
-              湖苺宴開在大湖酒莊的4樓，是大湖地區農會經營的田媽媽餐坊，但是不同於一般田園風格的田媽媽主題餐廳，主打草莓創意料理的湖苺宴，裝潢、菜色都充滿年輕想法，一群六年級中段班的田媽媽，把她們對草莓的奇思異想，充份發揮在料理上。
-              餐廳所供的菜色會依季節不同做更換，皆以套餐為主，在草莓產季菜單有德國烤豬腳酌草莓醋酸菜、草莓魚排酌草莓酸辣醬等，另外，這裡的意大利麵可是別處吃不到的哦！因為田媽媽們在麵條中加入了草莓，遊客吃了會有驚豔之感哦！
-              若是水梨產季，則推出水梨風味套餐，其中「水梨磨菇里肌肉餐」餐點以新鮮的水梨加上鮮嫩多汁的里肌肉以燴飯的方式呈現，讓您吃到水果的鮮甜及富有彈性的里肌肉，多層次的口感保證讓您回味無窮。</p>
-          </figcaption>
-        </figure>
-      </section>
-      <section class="grid__item">
-        <figure class="res">
-          <img class="res__img" src="https://ezgo.coa.gov.tw/Uploads/opendata/TainmaMain01/APPLY_D/20151007173924.jpg"
-            alt="123" width="400" height="267">
-          <figcaption class="res__text">
-            <p class="res__cou">苗栗縣</p>
-            <p class="res__desc">大湖鄉</p>
-            <h2 class="res__title">五五五五五</h2>
-            <p class="res__info">
-              湖苺宴開在大湖酒莊的4樓，是大湖地區農會經營的田媽媽餐坊，但是不同於一般田園風格的田媽媽主題餐廳，主打草莓創意料理的湖苺宴，裝潢、菜色都充滿年輕想法，一群六年級中段班的田媽媽，把她們對草莓的奇思異想，充份發揮在料理上。
-              餐廳所供的菜色會依季節不同做更換，皆以套餐為主，在草莓產季菜單有德國烤豬腳酌草莓醋酸菜、草莓魚排酌草莓酸辣醬等，另外，這裡的意大利麵可是別處吃不到的哦！因為田媽媽們在麵條中加入了草莓，遊客吃了會有驚豔之感哦！
-              若是水梨產季，則推出水梨風味套餐，其中「水梨磨菇里肌肉餐」餐點以新鮮的水梨加上鮮嫩多汁的里肌肉以燴飯的方式呈現，讓您吃到水果的鮮甜及富有彈性的里肌肉，多層次的口感保證讓您回味無窮。</p>
-          </figcaption>
-        </figure>
-      </section>
-
+    <main class="content grid" id="Content">
     </main>
   </div>
 
