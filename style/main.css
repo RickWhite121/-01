@@ -56,13 +56,13 @@ body {
   height:37px; 
   font-size:16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   background-color: #ededed; 
   background-image: url("/images/arrow.png");
   background-repeat: no-repeat;
   background-size: 6px 6px;
   background-position:right 10px center;
-  outline-color:#1e90ff;
+  outline-color:#a6c4f6;
   appearance:none;
 }
 .nav__select +.nav__select {
@@ -91,11 +91,12 @@ body {
   position: absolute;
   top: 150px;
   padding-left: 15px;
+  padding-right: 15px;
   color: #fff;
   transition:top 1s;
 }
 .res:hover .res__text {
-  top: 92px;
+  top: 85px;
 }
 .res__flag {
   position: absolute;

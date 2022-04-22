@@ -1,4 +1,4 @@
-const jsonData = [];
+let jsonData = [];
 let countyData = [];
 let townData = [];
 
@@ -8,6 +8,7 @@ const elemTownSelector = document.querySelector('#TownSelector');
 const elemContent = document.querySelector('#Content');
 
 const dataUrl = 'https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx';
+const limitWordLen = 49;
 
 const optionTemp = (item) => `<option value="${item}">${item}</option>`;
 const contentTemp = (item) => `
@@ -16,7 +17,7 @@ const contentTemp = (item) => `
                 <img 
                   class="res__img" 
                   src="${item.PicURL}"
-                  alt="${getAlt(item.PicURL)}" 
+                  alt="${item.Name}" 
                   width="400" 
                   height="267">
                 <p class="res__flag">${item.City}</p>
@@ -24,15 +25,14 @@ const contentTemp = (item) => `
                   <p class="res__desc res__desc--italic">${item.Town}</p>
                   <h2 class="res__title">${item.Name}</h2>
                   <hr>
-                  <p class="res__desc">${item.FoodFeature}</p>
+                  <p class="res__desc">${textLimit(item.FoodFeature)}</p>
                 </figcaption>
               </figure>
             </section>`;
 
 (async () => {
-  const result = await fetchData();
-  setJsonData(result);
-  elemCountySelector.innerHTML += strMaker(optionTemp, setCateData(jsonData, 'City'))
+  jsonData = await fetchData();
+  elemCountySelector.innerHTML += strMaker(optionTemp, uniData(jsonData, 'City'))
   elemContent.innerHTML += strMaker(contentTemp, jsonData);
   setListener();
   elemLoadingPage.remove();
@@ -52,35 +52,23 @@ async function fetchData() {
   };
 };
 
-function setJsonData(result) {
-  result.forEach((item) => {
-    jsonData.push(item);
-  });
-};
-
-function getAlt(img) {
-  return img.substring(img.lastIndexOf('/') + 1, img.lastIndexOf('.'));
-};
-
-function setCateData(data, mode, arr = []) {
-  switch (mode) {
-    case 'City':
-      data.map((item) => {
-        arr.push(item.City);
-      });
-      return arrayFilter(arr);
-    case 'Town':
-      data.map((item) => {
-        arr.push(item.Town);
-      });
-      return arrayFilter(arr);
-    default:
-      break;
+function textLimit(str, limitStr = '') {
+  if (str.length > limitWordLen) {
+    limitStr = str.substring(0, limitWordLen - 1);
+    return limitStr;
   };
+  return str;
 };
 
-function arrayFilter(data, filterArr = []) {
-  return filterArr = [...new Set(data)];
+function uniData(data, mode, arr = []) {
+  data.map(item => {
+    if (mode === 'City') {
+      arr.push(item.City);
+    } else if (mode === 'Town') {
+      arr.push(item.Town);
+    };
+  });
+  return [...new Set(arr)];
 };
 
 function strMaker(temp, data, str = '') {
@@ -90,38 +78,27 @@ function strMaker(temp, data, str = '') {
   return str;
 };
 
-function setArray(iniArray, showArray, selectValue, mode) {
-  switch (mode) {
-    case 'City':
-      iniArray.map(item => {
-        if (selectValue === item.City) {
-          showArray.push(item)
-        } else if (selectValue === '') {
-          showArray = iniArray;
-        };
-      });
-      break;
-    case 'Town':
-      iniArray.map(item => {
-        if (selectValue === item.Town) {
-          showArray.push(item)
-        } else if (selectValue === '') {
-          showArray = iniArray;
-        };
-      });
-      break;
-    default:
-      break;
-  };
+function setDataArray(iniArray, showArray, selectValue, mode) {
+  iniArray.map(item => {
+    if (mode === 'City') {
+      if (selectValue === item.City) {
+        showArray.push(item);
+      };
+    } else if (mode === 'Town') {
+      if (selectValue === item.Town) {
+        showArray.push(item);
+      };
+    };
+  });
 };
 
 function selectCountyEvent(e) {
   const self = e.target;
   const selectValue = self.value;
   countyData = [];
-  setArray(jsonData, countyData, selectValue, 'City');
+  setDataArray(jsonData, countyData, selectValue, 'City');
   elemTownSelector.innerHTML = `<option value="" disabled selected>請選擇鄉鎮區...</option>;`;
-  elemTownSelector.innerHTML += strMaker(optionTemp, setCateData(countyData, 'Town'));
+  elemTownSelector.innerHTML += strMaker(optionTemp, uniData(countyData, 'Town'));
   elemContent.innerHTML = strMaker(contentTemp, countyData);
 };
 
@@ -129,6 +106,6 @@ function selectTownEvent(e) {
   const self = e.target;
   const selectValue = self.value;
   townData = [];
-  setArray(countyData, townData, selectValue, 'Town');
+  setDataArray(countyData, townData, selectValue, 'Town');
   elemContent.innerHTML = strMaker(contentTemp, townData);
 };
