@@ -90,17 +90,36 @@ function strMaker(temp, data, str = '') {
   return str;
 };
 
+function setArray(iniArray, showArray, selectValue, mode) {
+  switch (mode) {
+    case 'City':
+      iniArray.map(item => {
+        if (selectValue === item.City) {
+          showArray.push(item)
+        } else if (selectValue === '') {
+          showArray = iniArray;
+        };
+      });
+      break;
+    case 'Town':
+      iniArray.map(item => {
+        if (selectValue === item.Town) {
+          showArray.push(item)
+        } else if (selectValue === '') {
+          showArray = iniArray;
+        };
+      });
+      break;
+    default:
+      break;
+  };
+};
+
 function selectCountyEvent(e) {
   const self = e.target;
   const selectValue = self.value;
   countyData = [];
-  jsonData.map(item => {
-    if (item.City === selectValue) {
-      countyData.push(item);
-    } else if (selectValue === '') {
-      countyData = jsonData;
-    };
-  });
+  setArray(jsonData, countyData, selectValue, 'City');
   elemTownSelector.innerHTML = `<option value="" disabled selected>請選擇鄉鎮區...</option>;`;
   elemTownSelector.innerHTML += strMaker(optionTemp, setCateData(countyData, 'Town'));
   elemContent.innerHTML = strMaker(contentTemp, countyData);
@@ -110,12 +129,6 @@ function selectTownEvent(e) {
   const self = e.target;
   const selectValue = self.value;
   townData = [];
-  countyData.map(item => {
-    if (selectValue === item.Town) {
-      townData.push(item)
-    } else if (selectValue === '') {
-      townData = countyData;
-    };
-  });
+  setArray(countyData, townData, selectValue, 'Town');
   elemContent.innerHTML = strMaker(contentTemp, townData);
 };

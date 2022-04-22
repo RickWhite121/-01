@@ -51,13 +51,19 @@ body {
 }
 .nav__select {
   width:300px; 
-  padding-left: 8px;
+  padding-left: 15px;
   margin:20px auto;
   height:37px; 
-  font-size:17px;
+  font-size:16px;
   border: none;
   border-radius: 5px;
   background-color: #ededed; 
+  background-image: url("/images/arrow.png");
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
+  background-position:right 10px center;
+  outline-color:#1e90ff;
+  appearance:none;
 }
 .nav__select +.nav__select {
   margin-left: 40px;
@@ -131,7 +137,7 @@ hr {
   }
   .nav__select {
     width: 100%;
-    margin: 10px 30px 10px 0px;
+    margin: 5px 30px 10px 0px;
     font-size: 15px;
     background-color: #dcdcdc;
     text-align: left;
@@ -140,6 +146,6 @@ hr {
     margin-left: 0px;
   }
   .content {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 }
