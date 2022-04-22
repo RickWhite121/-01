@@ -32,7 +32,7 @@ const contentTemp = (item) => `
 
 (async () => {
   jsonData = await fetchData();
-  elemCountySelector.innerHTML += strMaker(optionTemp, uniData(jsonData, 'City'))
+  elemCountySelector.innerHTML += strMaker(optionTemp, setCateData(jsonData, 'City'))
   elemContent.innerHTML += strMaker(contentTemp, jsonData);
   setListener();
   elemLoadingPage.remove();
@@ -60,13 +60,9 @@ function textLimit(str, limitStr = '') {
   return str;
 };
 
-function uniData(data, mode, arr = []) {
+function setCateData(data, cate, arr = []) {
   data.map(item => {
-    if (mode === 'City') {
-      arr.push(item.City);
-    } else if (mode === 'Town') {
-      arr.push(item.Town);
-    };
+    arr.push(item[cate]);
   });
   return [...new Set(arr)];
 };
@@ -78,16 +74,10 @@ function strMaker(temp, data, str = '') {
   return str;
 };
 
-function setDataArray(iniArray, showArray, selectValue, mode) {
+function setDataArray(iniArray, showArray, selectValue, cate) {
   iniArray.map(item => {
-    if (mode === 'City') {
-      if (selectValue === item.City) {
-        showArray.push(item);
-      };
-    } else if (mode === 'Town') {
-      if (selectValue === item.Town) {
-        showArray.push(item);
-      };
+    if (selectValue === item[cate]) {
+      showArray.push(item);
     };
   });
 };
@@ -98,7 +88,7 @@ function selectCountyEvent(e) {
   countyData = [];
   setDataArray(jsonData, countyData, selectValue, 'City');
   elemTownSelector.innerHTML = `<option value="" disabled selected>請選擇鄉鎮區...</option>;`;
-  elemTownSelector.innerHTML += strMaker(optionTemp, uniData(countyData, 'Town'));
+  elemTownSelector.innerHTML += strMaker(optionTemp, setCateData(countyData, 'Town'));
   elemContent.innerHTML = strMaker(contentTemp, countyData);
 };
 
