@@ -1,6 +1,6 @@
-let jsonData = [];
-let countyData = [];
-let townData = [];
+const jsonData = [];
+let currentCityData = '';
+let currentTownData = '';
 
 const elemLoadingPage = document.querySelector('#LoadingPage');
 const elemCountySelector = document.querySelector('#CountySelector');
@@ -31,9 +31,9 @@ const contentTemp = (item) => `
             </section>`;
 
 (async () => {
-  jsonData = await fetchData();
+  setJsonData(await fetchData());
   elemCountySelector.innerHTML += strMaker(optionTemp, setCateData(jsonData, 'City'))
-  elemContent.innerHTML += strMaker(contentTemp, jsonData);
+  elemContent.innerHTML += strMaker(contentTemp, setDataArray());
   setListener();
   elemLoadingPage.remove();
 })();
@@ -51,6 +51,12 @@ async function fetchData() {
     console.log(e.message);
   };
 };
+
+function setJsonData(result) {
+  result.forEach((item) => {
+    jsonData.push(item);
+  });
+}
 
 function textLimit(str, limitStr = '') {
   if (str.length > limitWordLen) {
@@ -74,28 +80,36 @@ function strMaker(temp, data, str = '') {
   return str;
 };
 
-function setDataArray(iniArray, showArray, selectValue, cate) {
-  iniArray.map(item => {
-    if (selectValue === item[cate]) {
-      showArray.push(item);
-    };
-  });
+function setDataArray(arr = []) {
+  currentCityData !== '' && currentTownData !== ''
+    ? jsonData.map(item => {
+      if (item.City === currentCityData && item.Town === currentTownData) {
+        arr.push(item);
+      };
+    })
+    : currentCityData !== ''
+      ? jsonData.map(item => {
+        if (item.City === currentCityData) {
+          arr.push(item);
+        };
+      })
+      : jsonData.map(item => {
+        arr.push(item);
+      });
+  return arr;
 };
 
 function selectCountyEvent(e) {
   const self = e.target;
-  const selectValue = self.value;
-  countyData = [];
-  setDataArray(jsonData, countyData, selectValue, 'City');
+  currentCityData = self.value;
+  currentTownData = '';
   elemTownSelector.innerHTML = `<option value="" disabled selected>請選擇鄉鎮區...</option>;`;
-  elemTownSelector.innerHTML += strMaker(optionTemp, setCateData(countyData, 'Town'));
-  elemContent.innerHTML = strMaker(contentTemp, countyData);
+  elemTownSelector.innerHTML += strMaker(optionTemp, setCateData(setDataArray(), 'Town'));
+  elemContent.innerHTML = strMaker(contentTemp, setDataArray());
 };
 
 function selectTownEvent(e) {
   const self = e.target;
-  const selectValue = self.value;
-  townData = [];
-  setDataArray(countyData, townData, selectValue, 'Town');
-  elemContent.innerHTML = strMaker(contentTemp, townData);
+  currentTownData = self.value;
+  elemContent.innerHTML = strMaker(contentTemp, setDataArray());
 };
