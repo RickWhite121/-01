@@ -115,11 +115,14 @@ body {
 .res__title {
   padding-bottom: 20px;
 }
-hr {
+.res__title::after {
+  content: '';
   position: absolute;
-  top: 42px;
+  top: 52px;
+  left: 15px;
   width: 48px;
-  border-top: 2px solid #fff;
+  height: 3px;
+  background: #fff;
 }
 
 @media screen and (max-width:414px) {

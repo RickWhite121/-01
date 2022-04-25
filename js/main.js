@@ -13,6 +13,7 @@ const limitWordLen = 49;
 const optionTemp = (item) => `<option value="${item}">${item}</option>`;
 const contentTemp = (item) => `
       <section class="grid__item">
+      ${item.Url === '' ? '' : `<a class="res__link" target="_blank" href="${item.Url}">`}
               <figure class="res">
                 <img 
                   class="res__img" 
@@ -24,15 +25,15 @@ const contentTemp = (item) => `
                 <figcaption class="res__text">
                   <p class="res__desc res__desc--italic">${item.Town}</p>
                   <h2 class="res__title">${item.Name}</h2>
-                  <hr>
                   <p class="res__desc">${textLimit(item.FoodFeature)}</p>
                 </figcaption>
               </figure>
+              ${item.Url === '' ? '' : `</a>`}
             </section>`;
 
 (async () => {
   setJsonData(await fetchData());
-  elemCountySelector.innerHTML += strMaker(optionTemp, setCateData(jsonData, 'City'))
+  elemCountySelector.innerHTML += strMaker(optionTemp, setCateData(jsonData, 'City'));
   elemContent.innerHTML += strMaker(contentTemp, setDataArray());
   setListener();
   elemLoadingPage.remove();
@@ -56,7 +57,7 @@ function setJsonData(result) {
   result.forEach((item) => {
     jsonData.push(item);
   });
-}
+};
 
 function textLimit(str, limitStr = '') {
   if (str.length > limitWordLen) {
@@ -81,21 +82,17 @@ function strMaker(temp, data, str = '') {
 };
 
 function setDataArray(arr = []) {
-  currentCityData !== '' && currentTownData !== ''
-    ? jsonData.map(item => {
-      if (item.City === currentCityData && item.Town === currentTownData) {
-        arr.push(item);
-      };
-    })
-    : currentCityData !== ''
-      ? jsonData.map(item => {
-        if (item.City === currentCityData) {
-          arr.push(item);
-        };
-      })
-      : jsonData.map(item => {
-        arr.push(item);
-      });
+  if (currentCityData !== '' && currentTownData !== '') {
+    arr = jsonData.filter((item) => {
+      return item.City === currentCityData && item.Town === currentTownData;
+    });
+  } else if (currentCityData !== '') {
+    arr = jsonData.filter(item => {
+      return item.City === currentCityData;
+    });
+  } else {
+    arr = jsonData;
+  };
   return arr;
 };
 
@@ -103,8 +100,9 @@ function selectCountyEvent(e) {
   const self = e.target;
   currentCityData = self.value;
   currentTownData = '';
+  const dataArray = setDataArray();
   elemTownSelector.innerHTML = `<option value="" disabled selected>請選擇鄉鎮區...</option>;`;
-  elemTownSelector.innerHTML += strMaker(optionTemp, setCateData(setDataArray(), 'Town'));
+  elemTownSelector.innerHTML += strMaker(optionTemp, setCateData(dataArray, 'Town'));
   elemContent.innerHTML = strMaker(contentTemp, setDataArray());
 };
 
