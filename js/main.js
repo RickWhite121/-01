@@ -54,7 +54,7 @@ async function fetchData() {
 };
 
 function setJsonData(result) {
-  result.forEach((item) => {
+  result.forEach(item => {
     jsonData.push(item);
   });
 };
@@ -68,9 +68,7 @@ function textLimit(str, limitStr = '') {
 };
 
 function setCateData(data, cate, arr = []) {
-  data.map(item => {
-    arr.push(item[cate]);
-  });
+  arr = data.map(item => item[cate]);
   return [...new Set(arr)];
 };
 
@@ -83,13 +81,11 @@ function strMaker(temp, data, str = '') {
 
 function setDataArray(arr = []) {
   if (currentCityData !== '' && currentTownData !== '') {
-    arr = jsonData.filter((item) => {
-      return item.City === currentCityData && item.Town === currentTownData;
-    });
+    arr = jsonData.filter(item =>
+      item.City === currentCityData && item.Town === currentTownData);
   } else if (currentCityData !== '') {
-    arr = jsonData.filter(item => {
-      return item.City === currentCityData;
-    });
+    arr = jsonData.filter(item =>
+      item.City === currentCityData);
   } else {
     arr = jsonData;
   };

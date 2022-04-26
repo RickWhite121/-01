@@ -1,0 +1,34 @@
+@media screen and (max-width:414px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px 15px;
+  }
+
+  .content {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .nav {
+    display: block;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color: transparent;
+  }
+
+  .nav__selector+.nav__selector {
+    margin-left: 0px;
+  }
+
+  .nav__select {
+    width: 100%;
+    margin: 10px 0px;
+    font-size: 15px;
+    background-color: #dcdcdc;
+    text-align: left;
+  }
+
+  .content {
+    margin-top: 5px;
+  }
+}

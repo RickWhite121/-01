@@ -10,6 +10,7 @@
   <title>農村入口網1</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
   <link rel="stylesheet" href="./style/main.css">
+  <link rel="stylesheet" href="./style/phone.css" media="screen and (max-width: 414px)">
 </head>
 
 <body>
@@ -24,12 +25,16 @@
   </header>
   <div class="container mx-auto">
     <nav class="nav">
-      <select class="nav__select" name="" id="CountySelector">
-        <option value="" disabled selected>請選擇行政區域...</option>
-      </select>
-      <select class="nav__select" name="" id="TownSelector">
-        <option value="" disabled selected>請選擇鄉鎮區...</option>
-      </select>
+      <div class="nav__selector">
+        <select class="nav__select" id="CountySelector">
+          <option value="" disabled selected>請選擇行政區域...</option>
+        </select>
+      </div>
+      <div class="nav__selector">
+        <select class="nav__select" id="TownSelector">
+          <option value="" disabled selected>請選擇鄉鎮區...</option>
+        </select>
+      </div>
     </nav>
     <main class="content grid" id="Content">
     </main>
